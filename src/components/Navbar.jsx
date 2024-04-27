@@ -47,21 +47,21 @@ const Navbar = () => {
     },
     open: {
       x: 0,
-      transition:{
-        when:"beforeChildren",
-        staggerChildren:0.2
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2
       }
     }
   }
 
   const listItemVariants = {
     closed: {
-      x:-10,
-      opacity:0
+      x: -10,
+      opacity: 0
     },
     open: {
-      x:0,
-      opacity:1
+      x: 0,
+      opacity: 1
     }
   }
 
@@ -130,7 +130,7 @@ const Navbar = () => {
           open && (
             <motion.div variants={listVariants} initial="closed" animate="open" className='absolute top-0 left-0 bg-gradient-to-b from-black to-gray-900 text-white text-3xl h-screen w-screen flex flex-col justify-center items-center gap-8 z-40'>
               {links.map((links) => (
-                <motion.div variants={listItemVariants}  key={links.title}>
+                <motion.div variants={listItemVariants} key={links.title}>
                   <Link href={links.url}>{links.title}</Link>
                 </motion.div>
               ))}
