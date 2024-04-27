@@ -41,6 +41,30 @@ const Navbar = () => {
     }
   }
 
+  const listVariants = {
+    closed: {
+      x: "100vw"
+    },
+    open: {
+      x: 0,
+      transition:{
+        when:"beforeChildren",
+        staggerChildren:0.2
+      }
+    }
+  }
+
+  const listItemVariants = {
+    closed: {
+      x:-10,
+      opacity:0
+    },
+    open: {
+      x:0,
+      opacity:1
+    }
+  }
+
   const [open, setOpen] = useState(false)
 
   const handleToggle = () => {
@@ -88,27 +112,29 @@ const Navbar = () => {
             variants={topVariants}
             animate={open ? "open" : "closed"}
             className='w-10 h-1 bg-black rounded origin-left'
-            ></motion.div>
+          ></motion.div>
           <motion.div
             variants={centerVariants}
-            animate= {open ? "open" : "closed"}
+            animate={open ? "open" : "closed"}
             className='w-10 h-1 bg-black rounded '
-            ></motion.div>
-          <motion.div 
-            variants={bottomVariants} 
-            animate= {open ? "open" : "closed"}
+          ></motion.div>
+          <motion.div
+            variants={bottomVariants}
+            animate={open ? "open" : "closed"}
             className='w-10 h-1 bg-black rounded origin-left'
-            ></motion.div>
+          ></motion.div>
 
         </button>
         {/* MENU LINKS */}
         {
           open && (
-            <div className='absolute top-0 left-0 bg-gradient-to-b from-black to-gray-900 text-white text-3xl h-screen w-screen flex flex-col justify-center items-center gap-8'>
+            <motion.div variants={listVariants} initial="closed" animate="open" className='absolute top-0 left-0 bg-gradient-to-b from-black to-gray-900 text-white text-3xl h-screen w-screen flex flex-col justify-center items-center gap-8 z-40'>
               {links.map((links) => (
-                <Link key={links.title} href={links.url}>{links.title}</Link>
+                <motion.div variants={listItemVariants}  key={links.title}>
+                  <Link href={links.url}>{links.title}</Link>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )
         }
 
