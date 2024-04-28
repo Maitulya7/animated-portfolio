@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global CSS configurations */
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
